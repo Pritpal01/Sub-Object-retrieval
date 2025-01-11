@@ -1,0 +1,9 @@
+To begin, the code loads a YOLOv8 model that has already been trained.
+It recognizes items like "Person" or "Car" and the bounding boxes that go with them after processing the input, which can be either a single image or a video stream.
+"Helmet" for a "Person" or "Tires" for a "Car" are examples of sub-objects that the system searches for after identifying the primary items.
+
+
+
+Bounding box coordinates and a unique identification (ID) are given to every item and sub-object. 
+Each item in the JSON-formatted results includes its name, ID, bounding box, and any related sub-objects with their corresponding data. 
+Real-time video processing is built into the system, which updates object and sub-object detections in real time while processing each frame separately.
