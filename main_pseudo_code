@@ -20,9 +20,6 @@ function main:
     save res to json file "out.json"
     close vid
 
-function load model:
-    return pre-trained model
-
 function open video path:
     return video object with path
 
