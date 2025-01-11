@@ -1,0 +1,52 @@
+def load_model():
+    model = YOLO("yolov8n.pt")
+    model.eval()  # for no training
+    return the model
+
+
+
+function main:
+    model = load model              # Yolov8 because real time Detection, Accuracy, Unified Model and different sizes of models.
+    vid = open video "inp_vid.mp4"
+    res = []
+
+    while vid has next frame:
+        frm = get next frame from vid
+        det = infer model on frm
+        parsed = parse detections det
+        hier = associate objects parsed
+        append hier to res
+
+    save res to json file "out.json"
+    close vid
+
+function load model:
+    return pre-trained model
+
+function open video path:
+    return video object with path
+
+function parse detections det:
+    prs = []
+    for d in det:
+        add {class: d.class, bbox: d.bbox} to prs
+    return prs
+
+function associate objects det:
+    hier = []
+    mains = filter main objects from det
+    subs = filter sub objects from det
+
+    for m in mains:
+        sub_list = []
+        for s in subs:
+            if s is within m:
+                add s to sub_list
+        add {object: m.class, bbox: m.bbox, subobjects: sub_list} to hier
+    return hier
+
+function s is within m:
+    return true if bounding boxes overlap
+
+function save res json:
+    write convert res to json to file json
