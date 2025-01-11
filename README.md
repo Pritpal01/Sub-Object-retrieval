@@ -18,7 +18,6 @@ def check_installations():
             print(f"{package} is installed.")
         except ImportError:
             print(f"{package} is NOT installed.")
-    
     python_version = sys.version
     print(f"\nPython version: {python_version}")
 check_installations()
